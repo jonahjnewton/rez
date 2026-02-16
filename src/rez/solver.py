@@ -442,8 +442,8 @@ class _PackageEntry(object):
 
             if (VariantSelectMode[config.variant_select_mode] == VariantSelectMode.version_priority):
                 k = (requested_key,
-                     -len(additional_key),
                      additional_key,
+                     -len(additional_key),
                      variant.index)
             else:  # VariantSelectMode.intersection_priority
                 k = (len(requested_key),
