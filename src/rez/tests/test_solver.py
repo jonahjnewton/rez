@@ -291,6 +291,9 @@ class TestSolver(TestBase):
                     ["python-2.7.0[]","test_prio_lower_extra_package-1.0[1]", "nada[]"], )
         self._solve(["test_prio_lower_extra_package", "nada", "python"],
                     ["nada[]", "python-2.6.0[]","test_prio_lower_extra_package-1.0[0]"], )
+        self._solve(["test_prio_lower_extra_package", "nada"],
+                    ["nada[]", "python-2.6.0[]","test_prio_lower_extra_package-1.0[0]"], 
+                    perms_same_packages=True)
         
         self._solve(["test_prio_higher_extra_package"],
                     ["nada[]", "python-2.7.0[]", "test_prio_higher_extra_package-1.0[1]"], 
@@ -300,6 +303,9 @@ class TestSolver(TestBase):
                     perms_same_packages=True)
         self._solve(["test_prio_higher_extra_package", "python", "nada"],
                     ["python-2.7.0[]", "nada[]", "test_prio_higher_extra_package-1.0[1]"], 
+                    perms_same_packages=True)
+        self._solve(["test_prio_higher_extra_package", "nada"],
+                    ["nada[]", "python-2.7.0[]", "test_prio_higher_extra_package-1.0[1]"], 
                     perms_same_packages=True)
         
         self._solve(["test_prio_both_extra_package"],
@@ -311,6 +317,9 @@ class TestSolver(TestBase):
         self._solve(["test_prio_both_extra_package", "python", "nada"],
                     ["python-2.7.0[]", "nada[]", "test_prio_both_extra_package-1.0[1]"], 
                     perms_same_packages=True)
+        self._solve(["test_prio_both_extra_package", "nada"],
+                    ["nada[]", "python-2.7.0[]", "test_prio_both_extra_package-1.0[1]"], 
+                    perms_same_packages=True)
         
         self._solve(["test_prio_both_base"],
                     ["python-2.7.0[]", "test_prio_both_base-1.0[1]"], 
@@ -319,6 +328,9 @@ class TestSolver(TestBase):
                     ["python-2.7.0[]", "test_prio_both_base-1.0[1]"], 
                     perms_same_packages=True)
         self._solve(["test_prio_both_base", "python", "nada"],
+                    ["python-2.7.0[]", "test_prio_both_base-1.0[1]", "nada[]"], 
+                    perms_same_packages=True)
+        self._solve(["test_prio_both_base", "nada"],
                     ["python-2.7.0[]", "test_prio_both_base-1.0[1]", "nada[]"], 
                     perms_same_packages=True)
         
@@ -332,6 +344,9 @@ class TestSolver(TestBase):
                     ["python-2.7.0[]","test_prio_lower_extra_package_reverse-1.0[0]", "nada[]"], )
         self._solve(["test_prio_lower_extra_package_reverse", "nada", "python"],
                     ["nada[]", "python-2.6.0[]","test_prio_lower_extra_package_reverse-1.0[1]"], )
+        self._solve(["test_prio_lower_extra_package_reverse", "nada"],
+                    ["nada[]", "python-2.6.0[]","test_prio_lower_extra_package_reverse-1.0[1]"], 
+                    perms_same_packages=True)
         
         self._solve(["test_prio_higher_extra_package_reverse"],
                     ["nada[]", "python-2.7.0[]", "test_prio_higher_extra_package_reverse-1.0[0]"], 
@@ -341,6 +356,9 @@ class TestSolver(TestBase):
                     perms_same_packages=True)
         self._solve(["test_prio_higher_extra_package_reverse", "python", "nada"],
                     ["python-2.7.0[]", "nada[]", "test_prio_higher_extra_package_reverse-1.0[0]"], 
+                    perms_same_packages=True)
+        self._solve(["test_prio_higher_extra_package_reverse", "nada"],
+                    ["nada[]", "python-2.7.0[]", "test_prio_higher_extra_package_reverse-1.0[0]"], 
                     perms_same_packages=True)
         
         self._solve(["test_prio_both_extra_package_reverse"],
@@ -352,6 +370,9 @@ class TestSolver(TestBase):
         self._solve(["test_prio_both_extra_package_reverse", "python", "nada"],
                     ["python-2.7.0[]", "nada[]", "test_prio_both_extra_package_reverse-1.0[0]"], 
                     perms_same_packages=True)
+        self._solve(["test_prio_both_extra_package_reverse", "nada"],
+                    ["nada[]", "python-2.7.0[]", "test_prio_both_extra_package_reverse-1.0[0]"], 
+                    perms_same_packages=True)
         
         self._solve(["test_prio_both_base_reverse"],
                     ["python-2.7.0[]", "test_prio_both_base_reverse-1.0[0]"], 
@@ -360,6 +381,9 @@ class TestSolver(TestBase):
                     ["python-2.7.0[]", "test_prio_both_base_reverse-1.0[0]"], 
                     perms_same_packages=True)
         self._solve(["test_prio_both_base_reverse", "python", "nada"],
+                    ["python-2.7.0[]", "test_prio_both_base_reverse-1.0[0]", "nada[]"], 
+                    perms_same_packages=True)
+        self._solve(["test_prio_both_base_reverse", "nada"],
                     ["python-2.7.0[]", "test_prio_both_base_reverse-1.0[0]", "nada[]"], 
                     perms_same_packages=True)
 
@@ -376,6 +400,9 @@ class TestSolver(TestBase):
                     ["python-2.6.0[]", "nada[]", "test_prio_lower_extra_package-1.0[0]"])
         self._solve(["python", "test_prio_lower_extra_package", "nada"],
                     ["python-2.7.0[]", "test_prio_lower_extra_package-1.0[1]", "nada[]"])
+        self._solve(["test_prio_lower_extra_package", "nada"],
+                    ["nada[]", "python-2.6.0[]", "test_prio_lower_extra_package-1.0[0]"],
+                    perms_same_packages=True)
         
         self._solve(["test_prio_higher_extra_package"],
                     ["python-2.6.0[]", "test_prio_higher_extra_package-1.0[0]"],
@@ -388,6 +415,9 @@ class TestSolver(TestBase):
                     ["python-2.7.0[]", "nada[]", "test_prio_higher_extra_package-1.0[1]"])
         self._solve(["python", "test_prio_higher_extra_package", "nada"],
                     ["python-2.7.0[]", "nada[]", "test_prio_higher_extra_package-1.0[1]"])
+        self._solve(["test_prio_higher_extra_package", "nada"],
+                    ["nada[]", "python-2.7.0[]", "test_prio_higher_extra_package-1.0[1]"],
+                    perms_same_packages=True)
         
         self._solve(["test_prio_both_extra_package"],
                     ["nada[]", "python-2.7.0[]", "test_prio_both_extra_package-1.0[1]"],
@@ -400,6 +430,9 @@ class TestSolver(TestBase):
                     ["python-2.7.0[]", "nada[]", "test_prio_both_extra_package-1.0[1]"])
         self._solve(["test_prio_both_extra_package", "nada", "python"],
                     ["nada[]", "python-2.7.0[]", "test_prio_both_extra_package-1.0[1]"])
+        self._solve(["test_prio_both_extra_package", "nada"],
+                    ["nada[]", "python-2.7.0[]", "test_prio_both_extra_package-1.0[1]"],
+                    perms_same_packages=True)
         
         self._solve(["test_prio_both_base"],
                     ["python-2.7.0[]", "test_prio_both_base-1.0[1]"],
@@ -412,6 +445,9 @@ class TestSolver(TestBase):
                     ["python-2.7.0[]", "test_prio_both_base-1.0[1]", "nada[]"])
         self._solve(["python", "test_prio_both_base", "nada"],
                     ["python-2.7.0[]", "test_prio_both_base-1.0[1]", "nada[]"])
+        self._solve(["test_prio_both_base", "nada"],
+                    ["python-2.7.0[]", "test_prio_both_base-1.0[1]", "nada[]"],
+                    perms_same_packages=True)
         
         self._solve(["test_prio_lower_extra_package_reverse"],
                     ["python-2.7.0[]", "test_prio_lower_extra_package_reverse-1.0[0]"],
@@ -424,6 +460,9 @@ class TestSolver(TestBase):
                     ["python-2.6.0[]", "nada[]", "test_prio_lower_extra_package_reverse-1.0[1]"])
         self._solve(["python", "test_prio_lower_extra_package_reverse", "nada"],
                     ["python-2.7.0[]", "test_prio_lower_extra_package_reverse-1.0[0]", "nada[]"])
+        self._solve(["test_prio_lower_extra_package_reverse", "nada"],
+                    ["nada[]", "python-2.6.0[]", "test_prio_lower_extra_package_reverse-1.0[1]"],
+                    perms_same_packages=True)
         
         self._solve(["test_prio_higher_extra_package_reverse"],
                     ["python-2.6.0[]", "test_prio_higher_extra_package_reverse-1.0[1]"],
@@ -436,6 +475,9 @@ class TestSolver(TestBase):
                     ["python-2.7.0[]", "nada[]", "test_prio_higher_extra_package_reverse-1.0[0]"])
         self._solve(["python", "test_prio_higher_extra_package_reverse", "nada"],
                     ["python-2.7.0[]", "nada[]", "test_prio_higher_extra_package_reverse-1.0[0]"])
+        self._solve(["test_prio_higher_extra_package_reverse", "nada"],
+                    ["nada[]", "python-2.7.0[]", "test_prio_higher_extra_package_reverse-1.0[0]"],
+                    perms_same_packages=True)
         
         self._solve(["test_prio_both_extra_package_reverse"],
                     ["nada[]", "python-2.7.0[]", "test_prio_both_extra_package_reverse-1.0[0]"],
@@ -448,6 +490,9 @@ class TestSolver(TestBase):
                     ["python-2.7.0[]", "nada[]", "test_prio_both_extra_package_reverse-1.0[0]"])
         self._solve(["test_prio_both_extra_package_reverse", "nada", "python"],
                     ["nada[]", "python-2.7.0[]", "test_prio_both_extra_package_reverse-1.0[0]"])
+        self._solve(["test_prio_both_extra_package_reverse", "nada"],
+                    ["nada[]", "python-2.7.0[]", "test_prio_both_extra_package_reverse-1.0[0]"],
+                    perms_same_packages=True)
         
         self._solve(["test_prio_both_base_reverse"],
                     ["python-2.7.0[]", "test_prio_both_base_reverse-1.0[0]"],
@@ -460,6 +505,9 @@ class TestSolver(TestBase):
                     ["python-2.7.0[]", "test_prio_both_base_reverse-1.0[0]", "nada[]"])
         self._solve(["python", "test_prio_both_base_reverse", "nada"],
                     ["python-2.7.0[]", "test_prio_both_base_reverse-1.0[0]", "nada[]"])
+        self._solve(["test_prio_both_base_reverse", "nada"],
+                    ["python-2.7.0[]", "test_prio_both_base_reverse-1.0[0]", "nada[]"],
+                    perms_same_packages=True)
 
 
 if __name__ == '__main__':
