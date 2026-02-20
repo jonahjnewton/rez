@@ -260,7 +260,7 @@ class TestSolver(TestBase):
             self._solve(["missing_variant_requires"], [])
 
         config.override("error_on_missing_variant_requires", False)
-        self._solve(["missing_variant_requires"], ["nada[]", "missing_variant_requires-1[1]"])
+        self._solve(["missing_variant_requires"], ["nada[]", "missing_variant_requires-1[0]"])
 
     def test_13_resolve_weakly_reference_requires(self):
         """Test resolving a package with a weakly referenced requirement."""
@@ -334,6 +334,19 @@ class TestSolver(TestBase):
                     ["python-2.7.0[]", "test_prio_both_base-1.0[1]", "nada[]"], 
                     perms_same_packages=True)
         
+        self._solve(["test_prio_both_versions_equal_extra_package"],
+                    ["python-2.6.0[]", "test_prio_both_versions_equal_extra_package-1.0[1]"], 
+                    perms_same_packages=True)
+        self._solve(["test_prio_both_versions_equal_extra_package", "python"],
+                    ["python-2.6.0[]", "test_prio_both_versions_equal_extra_package-1.0[1]"], 
+                    perms_same_packages=True)
+        self._solve(["test_prio_both_versions_equal_extra_package", "python", "nada"],
+                    ["python-2.6.0[]", "nada[]", "test_prio_both_versions_equal_extra_package-1.0[0]"],
+                    perms_same_packages=True)
+        self._solve(["test_prio_both_versions_equal_extra_package", "nada"],
+                    ["nada[]", "python-2.6.0[]", "test_prio_both_versions_equal_extra_package-1.0[0]"], 
+                    perms_same_packages=True)
+        
         self._solve(["test_prio_lower_extra_package_reverse"],
                     ["python-2.7.0[]", "test_prio_lower_extra_package_reverse-1.0[0]"], 
                     perms_same_packages=True)
@@ -405,7 +418,7 @@ class TestSolver(TestBase):
                     perms_same_packages=True)
         
         self._solve(["test_prio_higher_extra_package"],
-                    ["python-2.6.0[]", "test_prio_higher_extra_package-1.0[0]"],
+                    ["nada[]", "python-2.7.0[]", "test_prio_higher_extra_package-1.0[1]"],
                     perms_same_packages=True)
         self._solve(["test_prio_higher_extra_package", "python"],
                     ["python-2.7.0[]", "nada[]", "test_prio_higher_extra_package-1.0[1]"])
@@ -465,7 +478,7 @@ class TestSolver(TestBase):
                     perms_same_packages=True)
         
         self._solve(["test_prio_higher_extra_package_reverse"],
-                    ["python-2.6.0[]", "test_prio_higher_extra_package_reverse-1.0[1]"],
+                    ["nada[]", "python-2.7.0[]", "test_prio_higher_extra_package_reverse-1.0[0]"],
                     perms_same_packages=True)
         self._solve(["test_prio_higher_extra_package_reverse", "python"],
                     ["python-2.7.0[]", "nada[]", "test_prio_higher_extra_package_reverse-1.0[0]"])
